@@ -1,0 +1,135 @@
+body{
+	background-color:#DDDDDD;
+}
+.nav{
+		background-color:#333333;
+		padding:0px;
+		margin:0px;
+}
+.nav img{
+		width:8%;
+		margin-left:10px;
+}
+
+.nav ul {
+	float:right;
+	margin-right:10px;
+}
+.nav ul li{
+	list-style-type:disc;
+	float:right;
+	font-size:1%;
+	width:60px;
+	margin-left:20px;
+	text-align:center;
+	
+	
+}
+.nav li:nth-child(-n+3) a{
+	color:white;
+}
+.nav li:nth-child(4) a{
+	color:rgb(169,169,169);
+}
+.nav a{
+	
+	text-decoration:none;	
+}
+.nav ul li a:hover{
+	color:red;
+}
+.article1,
+.article2,
+.picture,
+.article3,
+.laster{
+	margin:20px;15px;
+	padding:20px;
+	background-color:white;
+}
+.article1 p,
+.article2 p{
+	text-indent:2em;
+}
+.article1 img,
+.article2 img{
+	width:20%;
+	height:20%;
+}
+.article2 li{
+	list-style-type:none;
+}
+.picture li{
+	width:20%;
+	height:20%;
+	padding:15px;
+	border:1px solid #bebebe;
+	list-style-type:none;
+	margin-bottom:10px;
+}
+.picture li p{
+	text-align:center;
+	font-size:8px;
+	margin-top:1px;
+}
+.picture li img{
+	width:100%;
+}
+.article3 h1{
+	text-align:center;
+}
+.article3 table{
+	border-collapse:collapse;
+	width:100%;
+}
+.article3 thead th{
+	background-color:black;
+	color:white;
+	text-align:left;
+}
+.article3 tfoot td{
+	background-color:gray;
+	color:black;
+}
+.laster h3{
+	font-size:16px ;
+	font-style:border;
+	border-left: 5px solid rgb(204, 204, 204);
+	padding-left:7px;
+	
+}
+.laster p{
+	padding-left:400px;
+	font-size:14px;
+	
+	
+}
+.laster span{
+	padding-left:300px;
+	font-family:times;
+	font-size:12px;
+}
+.laster pre{
+		padding-left:320px;
+	font-family:times;
+	font-size:12px;
+}
+div.spanstyle{
+	padding-left:60px;
+	font-family:times;
+	font-size:12px;
+}
+.laster form{
+	font-size:12px;
+}
+.laster input:checked:hover{
+	background-color:blue;
+}
+
+footer{
+		background-color:black;
+		color:white;
+		clear:both;
+		text-align:center;
+		padding:5px;
+}
