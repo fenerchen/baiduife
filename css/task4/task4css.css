@@ -24,6 +24,7 @@ header ul li{
 	float:left;
 	margin-right:30px;
 	color:#fffff;
+	display:inline;
 }
  header ul li a{
 	text-decoration: none;
