@@ -16,6 +16,7 @@ window.onload = function() {
 	//添加数字
 	right_in.onclick = function() {
 		flag_in = 'right';
+		//alert(this);
 		in_();
 	};
 	left_in.onclick = function() {
@@ -58,6 +59,7 @@ window.onload = function() {
 				var add_sort = document.createElement('span')
 				add_sort.className = 'display';
 				add_sort.style.width = 20 + 5 * num[num.length - 1 - i] + 'px';
+				//add_sort.style.height =  value + 'px';
 				add_sort.innerHTML = num[num.length - 1 - i];
 				sort.appendChild(add_sort);
 			}
@@ -82,7 +84,8 @@ window.onload = function() {
 		var add = document.createElement('span')
 		add.className = 'display';
 		if (value >= 10 && value <= 100 && count <= 60) {
-			add.style.width = 20 + 5 * value + 'px';
+			 add.style.width = 20 + 5 * value + 'px';
+			//add.style.height =  value + 'px';
 			add.innerHTML = value;
 			if (flag_in === 'right') {
 				list_num.appendChild(add);

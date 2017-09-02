@@ -22,7 +22,7 @@ a:hover{
 	margin: 0 0 0 20px;
 }
 #list{
-	height:1000px;
+	height:500px;
 	width:550px;
 	float: left;
 }
@@ -35,8 +35,12 @@ a:hover{
 	line-height: 20px;
 	cursor:pointer;
 }
+.display:hover{
+	background: #0f8b00;
+}
 #sort{
 	height:1000px;
 	width:550px;
 	float: right;
 }
+
