@@ -1,3 +1,7 @@
+/* 1、textarea 无法再其html中添加样式例如
+<textarea><b>加粗</b></textarea>在页面中会原样显示
+2、str.replace(x,y)替换函数，x可以是变量。替换结果不改变str的内容*/
+
 var check=document.getElementById('check');
 var textarea=document.getElementById('textarea');
 var input=document.getElementById('input');
