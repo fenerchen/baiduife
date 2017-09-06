@@ -1,0 +1,58 @@
+form{
+	/*height: 100px;*/
+	width:600px;
+	/*border: 1px solid;*/
+	margin: 100px auto;
+	font-size: 30px;
+	
+}
+#span_name,#span_pass,#span_confirm,#span_phone,#span_emil{
+	display: inline-block;
+	width: 120px;
+	height: 40px;
+	margin: 50px 20px 0 0;
+	font-size: 25px;
+	line-height: 50px;
+	text-align: right;
+	font-weight: bold;
+	color:#000;
+}
+.input_prompt{
+	display: block;
+	color: #aaa;
+}
+.blur_prompt{
+	display: block;
+	color: #f00;
+}
+.prompt_succ{
+	color: #0fa;
+	display: block;
+}
+span{
+	font-size: 14px;
+	margin: 5px 0px 0 142px;	
+	display: none;
+}
+input{
+	margin:40px 0 0 0;
+	height: 40px;
+	width:350px;
+	border-radius:4px;
+	border: 1px solid #000;
+	font-size: 22px;
+}
+button{
+	height: 50px;
+	width:98px;
+	border-radius:4px;
+	border: 1px solid #06a;
+	background: #06a;
+	color: #fff;
+	font-size: 20px;
+	cursor: pointer;
+	position: relative;
+	left:398px;	
+	top:40px;
+}
+
