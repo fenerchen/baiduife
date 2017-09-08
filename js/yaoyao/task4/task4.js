@@ -1,9 +1,17 @@
 var exec = document.getElementById('exec');
 var seletion = document.getElementById('seletion');
 var box = document.getElementById('box');
+var wrapper=document.getElementById('wrapper');
 var flag = 'top';
 var current = 0;
 
+function add(){
+	for(var i=0;i<100;i++){
+		var node=document.createElement('div');
+		wrapper.appendChild(node);
+	}
+}
+add();//创建网格
 exec.addEventListener('click', show);
 
 function show() {
