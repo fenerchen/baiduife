@@ -49,25 +49,29 @@ function show() {
 			check_top(top_, 't', box);
 			break;
 		case 'trarig':
-			check_left(left_, 'r',box);
+			check_left(left_, 'r', box);
 			break;
 		case 'trabot':
 			check_top(top_, 'b', box);
 			break;
 		case 'movlef':
 			box.style.transform = 'rotate(270deg)';
+			current=270;
 			check_left(left_, 'l', box);
 			break;
 		case 'movtop':
 			box.style.transform = 'rotate(0deg)';
+			current=0;
 			check_top(top_, 't', box);
 			break;
 		case 'movrig':
 			box.style.transform = 'rotate(90deg)';
+			current=90;
 			check_left(left_, 'r', box);
 			break;
 		case 'movbot':
 			box.style.transform = 'rotate(180deg)';
+			current=180;
 			check_top(top_, 'b', box);
 			break;
 		default:
@@ -75,9 +79,9 @@ function show() {
 	}
 
 }
-//不能超出边界
+// 不能超出边界
 function check_top(top_, str, obj) {
-//e.preventDefault();
+	var const_movetimes=100;
 	var top = top_;
 	if (top <= 0) {
 		top = 0;
@@ -85,25 +89,25 @@ function check_top(top_, str, obj) {
 		top = 450;
 	}
 	if (top && str === 't') {
-		return timer = setInterval(function() {
-			obj.style.top = (top - 10) + 'px';
-			if (obj.style.top === (top - 50) + 'px') {
-				clearInterval(timer);
-			}
-		}, 200);
+		for (var i = 1; i < const_movetimes+1;i++) {
+			var x=(function	(index){
+				return function(){obj.style.top = (top - index*50/const_movetimes) + 'px';}
+			})(i);
+			setTimeout(x, 1000/const_movetimes * i);
+		}
 	}
 	if (top < 450 && str === 'b') {
-		return timer = setInterval(function() {
-			obj.style.top = (top + 10) + 'px';
-			if (obj.style.top === (top + 50) + 'px') {
-				clearInterval(timer);
-			}
-		}, 200);
+		for (var i = 1; i < const_movetimes+1;i++) {
+			var y=(function	(index){
+					return function(){obj.style.top = (top + index*50/const_movetimes) + 'px';}
+			})(i)
+			 setTimeout(y, 1000/const_movetimes*i);
+		}
 	}
 }
 
 function check_left(left_, str, obj) {
-	//e.preventDefault();
+	var const_movetimes=100;
 	var left = left_;
 	if (left <= 0) {
 		left = 0;
@@ -111,54 +115,50 @@ function check_left(left_, str, obj) {
 		left = 450;
 	}
 	if (left && str === 'l') {
-		for (var i = 1; i < 6;i++) {
+		for (var i = 1; i < const_movetimes+1;i++) {
 			var x=(function	(index){
-				console.log(index);
-				return function(){obj.style.left = (left - index*10) + 'px';}
-					 
-					// alert(index	);
+				return function(){obj.style.left = (left - index*50/const_movetimes) + 'px';}
 			})(i);
-			setInterval(x, 500);
-			//alert(obj.style.left	);
+			setTimeout(x, 1000/const_movetimes * i);
 		}
-
 	}
 	if (left < 450 && str === 'r') {
-	for (var i = 1; i < 51;i++) {
+	for (var i = 1; i < const_movetimes+1;i++) {
 			var y=(function	(index){
-					return function(){obj.style.left = (left + index) + 'px';}
+					return function(){obj.style.left = (left + index*50/const_movetimes) + 'px';}
 			})(i)
-			timer = setInterval(y, 2000);
+			setTimeout(y, 1000/const_movetimes*i);
 		}
 	}
 }
 
-// function check_top(top_,str) {
+// function check_top(top_, str) {
 // 	var top = top_;
 // 	if (top <= 0) {
 // 		top = 0;
 // 	} else if (top >= 450) {
 // 		top = 450;
 // 	}
-// 	if(top&&str==='t'){
-// 	return	box.style.top = (top- 50) + 'px';
-// 		}
-// 	if(top<450&&str==='b'){
-// 	return box.style.top = top_ + 50 + 'px';
+// 	if (top && str === 't') {
+// 		box.style.top = (top - 5) + 'px';
+
+// 	}
+// 	if (top < 450 && str === 'b') {
+// 		box.style.top = top_ + 50 + 'px';
 // 	}
 // }
 
-// function check_left(left_,str) {
+// function check_left(left_, str) {
 // 	var left = left_;
 // 	if (left <= 0) {
 // 		left = 0;
 // 	} else if (left >= 450) {
 // 		left = 450;
 // 	}
-// 	if(left&&str==='l'){
-// 		return 	box.style.left = left- 50 + 'px';
-// 		}
-// 		if(left<450&&str==='r'){
-// 		return 	box.style.left = left+50 + 'px';
-// 		}			
+// 	if (left && str === 'l') {
+// 		box.style.left = left - 50 + 'px';
+// 	}
+// 	if (left < 450 && str === 'r') {
+// 		box.style.left = left + 50 + 'px';
+// 	}
 // }
