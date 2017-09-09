@@ -31,16 +31,16 @@ function show() {
 			}
 			break;
 		case 'tunlef':
+			chang_deg(-90);
 			current = (current - 90) % 360;
-			box.style.transform = 'rotate(' + current + 'deg)';
 			break;
 		case 'tunrig':
+			chang_deg(90);
 			current = (current + 90) % 360;
-			box.style.transform = 'rotate(' + current + 'deg)';
 			break;
 		case 'tunbac':
+			chang_deg(180);
 			current = (current + 180) % 360;
-			box.style.transform = 'rotate(' + current + 'deg)';
 			break;
 		case 'tralef':
 			check_left(left_, 'l', box);
@@ -56,22 +56,22 @@ function show() {
 			break;
 		case 'movlef':
 			box.style.transform = 'rotate(270deg)';
-			current=270;
+			current = 270;
 			check_left(left_, 'l', box);
 			break;
 		case 'movtop':
 			box.style.transform = 'rotate(0deg)';
-			current=0;
+			current = 0;
 			check_top(top_, 't', box);
 			break;
 		case 'movrig':
 			box.style.transform = 'rotate(90deg)';
-			current=90;
+			current = 90;
 			check_left(left_, 'r', box);
 			break;
 		case 'movbot':
 			box.style.transform = 'rotate(180deg)';
-			current=180;
+			current = 180;
 			check_top(top_, 'b', box);
 			break;
 		default:
@@ -81,7 +81,7 @@ function show() {
 }
 // 不能超出边界
 function check_top(top_, str, obj) {
-	var const_movetimes=100;
+	var const_movetimes = 100;
 	var top = top_;
 	if (top <= 0) {
 		top = 0;
@@ -89,25 +89,29 @@ function check_top(top_, str, obj) {
 		top = 450;
 	}
 	if (top && str === 't') {
-		for (var i = 1; i < const_movetimes+1;i++) {
-			var x=(function	(index){
-				return function(){obj.style.top = (top - index*50/const_movetimes) + 'px';}
+		for (var i = 1; i < const_movetimes + 1; i++) {
+			var x = (function(index) {
+				return function() {
+					obj.style.top = (top - index * 50 / const_movetimes) + 'px';
+				}
 			})(i);
-			setTimeout(x, 1000/const_movetimes * i);
+			setTimeout(x, 1000 / const_movetimes * i);
 		}
 	}
 	if (top < 450 && str === 'b') {
-		for (var i = 1; i < const_movetimes+1;i++) {
-			var y=(function	(index){
-					return function(){obj.style.top = (top + index*50/const_movetimes) + 'px';}
+		for (var i = 1; i < const_movetimes + 1; i++) {
+			var y = (function(index) {
+				return function() {
+					obj.style.top = (top + index * 50 / const_movetimes) + 'px';
+				}
 			})(i)
-			 setTimeout(y, 1000/const_movetimes*i);
+			setTimeout(y, 1000 / const_movetimes * i);
 		}
 	}
 }
 
 function check_left(left_, str, obj) {
-	var const_movetimes=100;
+	var const_movetimes = 100;
 	var left = left_;
 	if (left <= 0) {
 		left = 0;
@@ -115,50 +119,36 @@ function check_left(left_, str, obj) {
 		left = 450;
 	}
 	if (left && str === 'l') {
-		for (var i = 1; i < const_movetimes+1;i++) {
-			var x=(function	(index){
-				return function(){obj.style.left = (left - index*50/const_movetimes) + 'px';}
+		for (var i = 1; i < const_movetimes + 1; i++) {
+			var x = (function(index) {
+				return function() {
+					obj.style.left = (left - index * 50 / const_movetimes) + 'px';
+				}
 			})(i);
-			setTimeout(x, 1000/const_movetimes * i);
+			setTimeout(x, 1000 / const_movetimes * i);
 		}
 	}
 	if (left < 450 && str === 'r') {
-	for (var i = 1; i < const_movetimes+1;i++) {
-			var y=(function	(index){
-					return function(){obj.style.left = (left + index*50/const_movetimes) + 'px';}
+		for (var i = 1; i < const_movetimes + 1; i++) {
+			var y = (function(index) {
+				return function() {
+					obj.style.left = (left + index * 50 / const_movetimes) + 'px';
+				}
 			})(i)
-			setTimeout(y, 1000/const_movetimes*i);
+			setTimeout(y, 1000 / const_movetimes * i);
 		}
 	}
 }
 
-// function check_top(top_, str) {
-// 	var top = top_;
-// 	if (top <= 0) {
-// 		top = 0;
-// 	} else if (top >= 450) {
-// 		top = 450;
-// 	}
-// 	if (top && str === 't') {
-// 		box.style.top = (top - 5) + 'px';
+function chang_deg(deg) {
+	var changdeg = current;
 
-// 	}
-// 	if (top < 450 && str === 'b') {
-// 		box.style.top = top_ + 50 + 'px';
-// 	}
-// }
-
-// function check_left(left_, str) {
-// 	var left = left_;
-// 	if (left <= 0) {
-// 		left = 0;
-// 	} else if (left >= 450) {
-// 		left = 450;
-// 	}
-// 	if (left && str === 'l') {
-// 		box.style.left = left - 50 + 'px';
-// 	}
-// 	if (left < 450 && str === 'r') {
-// 		box.style.left = left + 50 + 'px';
-// 	}
-// }
+	for (var i = 1; i < 101; i++) {
+		var y = (function(index) {
+			return function() {
+					box.style.transform = 'rotate(' + (changdeg + deg / 100 * index) % 360 + 'deg)';
+				}
+		})(i)
+		setTimeout(y, 10 * i);
+	}
+}
