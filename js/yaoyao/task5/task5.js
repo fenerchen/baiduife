@@ -1,3 +1,4 @@
+// 现在只能执行完一次，点击一次，结果正确。没有解决连续多次点击后让小方块正确执行
 var exec = document.getElementById('exec');
 var seletion = document.getElementById('seletion');
 var box = document.getElementById('box');
@@ -55,7 +56,7 @@ function show() {
 			check_top(top_, 'b', box);
 			break;
 		case 'movlef':
-			chang_deg(-90 - (current + 360) % 360, 'l',left_);
+			chang_deg(270 - (current + 360) % 360, 'l',left_);
 			current = 270;
 			break;
 		case 'movtop':
@@ -79,16 +80,12 @@ function show() {
 function check_top(top_, str, obj) {
 	var const_movetimes = 100;
 	var top = top_;
-	if (top <= 0) {
-		top = 0;
-	} else if (top >= 450) {
-		top = 450;
-	}
-	if (top && str === 't') {
+
+	if (str === 't') {
 		for (var i = 1; i < const_movetimes + 1; i++) {
 			var x = (function(index) {
 				return function() {
-					obj.style.top = (top - index * 50 / const_movetimes) + 'px';
+					obj.style.top = (top - index * 50 / const_movetimes)<=0?0:(top - index * 50 / const_movetimes)+ 'px';
 					if (index === const_movetimes)
 						clearTimeout(t);
 				}
@@ -100,7 +97,7 @@ function check_top(top_, str, obj) {
 		for (var i = 1; i < const_movetimes + 1; i++) {
 			var y = (function(index) {
 				return function() {
-					obj.style.top = (top + index * 50 / const_movetimes) + 'px';
+					obj.style.top = (top + index * 50 / const_movetimes)>=450?450:(top +index * 50 / const_movetimes) + 'px';
 					if (index === const_movetimes)
 						clearTimeout(t);
 				}
@@ -114,30 +111,25 @@ function check_top(top_, str, obj) {
 function check_left(left_, str, obj) {
 	var const_movetimes = 100;
 	var left = left_;
-	if (left <= 0) {
-		left = 0;
-	} else if (left >= 450) {
-		left = 450;
-	}
-	if (left && str === 'l') {
+
+	if (str === 'l') {
 		for (var i = 1; i < const_movetimes + 1; i++) {
 			var x = (function(index) {
 				return function() {
-					obj.style.left = (left - index * 50 / const_movetimes) + 'px';
+					 obj.style.left =(left- index * 50 / const_movetimes)<=0?0:(left -index * 50 / const_movetimes) + 'px';
 					if (index === const_movetimes)
 						clearTimeout(t);
 				}
 			})(i);
 			var t = setTimeout(x, 1000 / const_movetimes * i);
-			// setTimeout(y, i);
 		}
 
 	}
-	if (left < 450 && str === 'r') {
+	if (str === 'r') {
 		for (var i = 1; i < const_movetimes + 1; i++) {
 			var y = (function(index) {
 				return function() {
-					obj.style.left = (left + index * 50 / const_movetimes) + 'px';
+					 obj.style.left =(left + index * 50 / const_movetimes)>=450?450:(left +index * 50 / const_movetimes) + 'px';
 					if (index === const_movetimes) {
 						clearTimeout(t);
 					}
@@ -145,7 +137,6 @@ function check_left(left_, str, obj) {
 			})(i)
 			var t = setTimeout(y, 1000 / const_movetimes * i);
 		}
-
 	}
 }
 //旋转动画
