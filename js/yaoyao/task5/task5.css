@@ -17,8 +17,7 @@
 }
 #wrapper>div{
 	border:1px solid #ccc;
-	/*border-right:1px solid #ccc;
-    border-bottom: 1px solid #ccc;*/
+
 }
 #box{
 	width: 50px;
@@ -26,10 +25,7 @@
 	border-top:10px solid blue ;
 	background:red;
 	position: absolute;
-	/*left:300px;
-	top:300px;*/
 	transform: rotate(0deg);
-	
 }
 
 pre{

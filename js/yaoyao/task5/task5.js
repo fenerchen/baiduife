@@ -3,7 +3,7 @@ var seletion = document.getElementById('seletion');
 var box = document.getElementById('box');
 var wrapper = document.getElementById('wrapper');
 var flag = 'top';
-var current = 0;
+var current = 0;//全局变量，保存角度
 
 function add() {
 	for (var i = 0; i < 100; i++) {
@@ -55,31 +55,27 @@ function show() {
 			check_top(top_, 'b', box);
 			break;
 		case 'movlef':
-			box.style.transform = 'rotate(270deg)';
+			chang_deg(-90 - (current + 360) % 360, 'l',left_);
 			current = 270;
-			check_left(left_, 'l', box);
 			break;
 		case 'movtop':
-			box.style.transform = 'rotate(0deg)';
+			chang_deg(0 - (current + 360) % 360, 't', top_);
 			current = 0;
-			check_top(top_, 't', box);
 			break;
 		case 'movrig':
-			box.style.transform = 'rotate(90deg)';
+			chang_deg(90 - (current + 360) % 360, 'r', left_);
 			current = 90;
-			check_left(left_, 'r', box);
 			break;
 		case 'movbot':
-			box.style.transform = 'rotate(180deg)';
+			chang_deg(180 - (current + 360) % 360, 'b', top_);
 			current = 180;
-			check_top(top_, 'b', box);
 			break;
 		default:
 			break;
 	}
 
 }
-// 不能超出边界
+// 不能超出边界,移动动画
 function check_top(top_, str, obj) {
 	var const_movetimes = 100;
 	var top = top_;
@@ -93,9 +89,11 @@ function check_top(top_, str, obj) {
 			var x = (function(index) {
 				return function() {
 					obj.style.top = (top - index * 50 / const_movetimes) + 'px';
+					if (index === const_movetimes)
+						clearTimeout(t);
 				}
 			})(i);
-			setTimeout(x, 1000 / const_movetimes * i);
+			var t = setTimeout(x, 1000 / const_movetimes * i);
 		}
 	}
 	if (top < 450 && str === 'b') {
@@ -103,9 +101,12 @@ function check_top(top_, str, obj) {
 			var y = (function(index) {
 				return function() {
 					obj.style.top = (top + index * 50 / const_movetimes) + 'px';
+					if (index === const_movetimes)
+						clearTimeout(t);
 				}
 			})(i)
-			setTimeout(y, 1000 / const_movetimes * i);
+			var t = setTimeout(y, 1000 / const_movetimes * i);
+
 		}
 	}
 }
@@ -123,32 +124,51 @@ function check_left(left_, str, obj) {
 			var x = (function(index) {
 				return function() {
 					obj.style.left = (left - index * 50 / const_movetimes) + 'px';
+					if (index === const_movetimes)
+						clearTimeout(t);
 				}
 			})(i);
-			setTimeout(x, 1000 / const_movetimes * i);
+			var t = setTimeout(x, 1000 / const_movetimes * i);
+			// setTimeout(y, i);
 		}
+
 	}
 	if (left < 450 && str === 'r') {
 		for (var i = 1; i < const_movetimes + 1; i++) {
 			var y = (function(index) {
 				return function() {
 					obj.style.left = (left + index * 50 / const_movetimes) + 'px';
+					if (index === const_movetimes) {
+						clearTimeout(t);
+					}
 				}
 			})(i)
-			setTimeout(y, 1000 / const_movetimes * i);
+			var t = setTimeout(y, 1000 / const_movetimes * i);
 		}
+
 	}
 }
-
-function chang_deg(deg) {
+//旋转动画
+function chang_deg(deg, str, position) {
 	var changdeg = current;
 
 	for (var i = 1; i < 101; i++) {
 		var y = (function(index) {
 			return function() {
-					box.style.transform = 'rotate(' + (changdeg + deg / 100 * index) % 360 + 'deg)';
+				box.style.transform = 'rotate(' + (changdeg + deg / 100 * index) % 360 + 'deg)';
+				if (index === 100) {
+					clearTimeout(t);
 				}
+				if (index === 100) {
+					if (str === 'l' || str === 'r') {
+						check_left(position, str, box);
+					} else {
+						check_top(position, str, box);
+					}
+				}
+			}
 		})(i)
-		setTimeout(y, 10 * i);
+		var t = setTimeout(y, 6 * i);
 	}
+
 }
