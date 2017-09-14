@@ -73,3 +73,4 @@ function drag(e) {
 		document.onmouseup = null;
 	}
 }
+n=10;
