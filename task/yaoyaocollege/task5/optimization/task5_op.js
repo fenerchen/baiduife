@@ -81,11 +81,9 @@ function check_top(top_, str, obj) {
 
 	if (str === 't') {
 		obj.style.top = (top - 50) <= 0 ? 0 : (top - 50) + 'px';
-		console.log(obj.style.top);
 	}
 	if (top < 450 && str === 'b') {
 		obj.style.top = (top + 50) > 450 ? 450 : (top + 50) + 'px';
-		console.log(obj.style.top);
 	}
 }
 //左右移动
@@ -94,11 +92,10 @@ function check_left(left_, str, obj) {
 
 	if (str === 'l') {
 		obj.style.left = (left - 50) <= 0 ? 0 : (left - 50) + 'px';
-		console.log(obj.style.left);
 	}
 	if (str === 'r') {
 		obj.style.left = (left + 50) > 450 ? 450 : (left + 50) + 'px';
-		console.log(obj.style.left);
+		32
 	}
 }
 //旋转动画
