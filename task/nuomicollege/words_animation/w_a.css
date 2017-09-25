@@ -40,13 +40,13 @@
 h2,h3{
 	position: absolute;
 	color:transparent;
-	background-size: 300% 100%;
+	background-size: 200% 100%;
     -webkit-background-clip: text;
     opacity: 0;
     transition: opacity 1s;
 }
 h2{
-	background-image: -webkit-linear-gradient(left, red, orange, yellow, purple,green);
+	background-image: -webkit-linear-gradient(left, red, orange, purple,orange,red);
 
 }
 #wrap:hover #word:before{

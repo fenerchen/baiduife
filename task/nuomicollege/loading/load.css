@@ -1,0 +1,174 @@
+  * {
+      margin: 0px;
+      padding: 0;
+  }
+
+  #wrap {
+      height: 100px;
+      width: 100px;
+      position: relative;
+      margin: 100px auto;
+  }
+
+  #small {
+      height: 60px;
+      width: 60px;
+      position: relative;
+      top: -80px;
+      left: 20px;
+      z-index: 4;
+  }
+
+  #run {
+      height: 100px;
+      width: 100px;
+      position: relative;
+      opacity: 0;
+      animation: cir 1s infinite linear;
+  }
+
+  @keyframes cir {
+      0% {
+          transform: rotate(0deg);
+          opacity: 0;
+      }
+      100% {
+          transform: rotate(360deg);
+          opacity: 1;
+      }
+  }
+
+  #f {
+      height: 30px;
+      width: 30px;
+      border-radius: 30px 0 0 0px;
+      background: #f24;
+      z-index: 4;
+      position: absolute;
+      opacity: 0;
+      transform-origin: right bottom;
+      animation: f 4s infinite linear;
+  }
+
+  #s {
+      height: 30px;
+      width: 30px;
+      border-radius: 0px 30px 0 0px;
+      background: #f24;
+      z-index: 4;
+      left: 30px;
+      position: absolute;
+      opacity: 0;
+      transform-origin: left bottom;
+
+      animation: s 4s infinite linear;
+  }
+
+  #t {
+      height: 30px;
+      width: 30px;
+      border-radius: 0px 0px 30px 0px;
+      background: #f24;
+      z-index: 4;
+      left: 30px;
+      top: 30px;
+      position: absolute;
+      opacity: 0;
+      transform-origin: left top;
+      animation: t 4s infinite linear;
+  }
+
+  #fo {
+      height: 30px;
+      width: 30px;
+      border-radius: 0px 0px 0px 30px;
+      background: #f24;
+      z-index: 4;
+      left: 0px;
+      top: 30px;
+      position: absolute;
+      opacity: 0;
+      transform-origin: right top;
+
+      animation: fo 4s infinite linear;
+  }
+
+  @keyframes f {
+      0% {
+          transform: rotate(0deg);
+          opacity: 0;
+      }
+      25% {
+          transform: rotate(90deg);
+          opacity: 1;
+          display: block;
+      }
+      100% {
+          transform: rotate(90deg);
+          opacity: 1;
+          display: block;
+      }
+  }
+
+  @keyframes s {
+      0% {
+          transform: rotate(0deg);
+          opacity: 0;
+      }
+      100% {
+          transform: rotate(90deg);
+          opacity: 1;
+      }
+  }
+
+  @keyframes t {
+      0% {
+          transform: rotate(0deg);
+          opacity: 0;
+      }
+      25% {
+          transform: rotate(90deg);
+          opacity: 1;
+      }
+      100% {
+          transform: rotate(90deg);
+          opacity: 1;
+      }
+  }
+
+  @keyframes fo {
+      0% {
+          transform: rotate(0deg);
+          opacity: 0;
+      }
+      100% {
+          transform: rotate(90deg);
+          opacity: 1;
+      }
+  }
+
+  #arc {
+      height: 50px;
+      width: 50px;
+      background-color: #fff;
+      position: absolute;
+      z-index: 2;
+  }
+
+  #circular {
+      height: 98px;
+      width: 98px;
+      border-radius: 50%;
+      border: 2px solid #f24;
+      position: absolute;
+      z-index: 1;
+  }
+
+  #rou {
+      height: 60px;
+      width: 60px;
+      border-radius: 50%;
+      background-color: #f99;
+      position: absolute;
+      z-index: 3;
+  }
