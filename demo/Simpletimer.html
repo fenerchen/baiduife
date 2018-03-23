@@ -18,7 +18,7 @@
         line-height: 40px;
     }
 
-    .input,
+    h1,.input,
     .Countdown {
         margin: 20px auto;
         text-align: center;
@@ -44,10 +44,11 @@
 </head>
 
 <body>
+	<h1>简易倒计时器</h1>
     <div class="input">
-        <input type="text" placeholder="时">
-        <input type="text" placeholder="分">
-        <input type="text" placeholder="秒">
+        <input type="text" placeholder="输入时">
+        <input type="text" placeholder="输入分">
+        <input type="text" placeholder="输入秒">
         <input type="button" value="OK" class="btn">
     </div>
     <div class="Countdown">
@@ -135,7 +136,7 @@
                     hour_t = '';
                
                 [hour_t, min_t, sec_t] = getInnerText([hour, min, sec]);
-                
+
                 if (sec_t > 0) {
                    
                     setInnerText([z_s, sec], [(sec_t > 10) ? '' : '0', --sec_t]);
