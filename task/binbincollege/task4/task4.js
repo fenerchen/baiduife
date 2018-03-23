@@ -55,7 +55,7 @@ window.onload = function() {
 			} else if (flag === 'left') { //左侧点击，则将元素从头插入
 				list_num.insertBefore(add, list_num.firstElementChild);
 			}
-		} else {
+		 else {
 			alert('请输入数字')
 		}
 		input.value = '';

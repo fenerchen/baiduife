@@ -1,0 +1,183 @@
+<!Doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>贪吃蛇游戏</title>
+    <style>
+    .wrapper {
+        margin: 100px auto;
+        width: 600px;
+        height: 600px;
+        border: 1px solid #ccc;
+        display: grid;
+        grid-template-columns: repeat(20, 30px);
+        grid-template-rows: repeat(20, 30px);
+    }
+    /*选择.wrapper下的所有div孩子元素*/
+
+    .wrapper>div {
+        border: 1px solid #ccc;
+    }
+
+    #drawing {
+        position: absolute;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <canvas id="drawing" width="600px" height="600px"></canvas>
+    </div>
+    <!-- <canvas id="drawing" width="600px" height="600px"></canvas> -->
+</body>
+<script>
+// var wrapper = document.getElementsByClassName('wrapper')[0];
+var props = {
+    wrapper: document.getElementsByClassName('wrapper')[0],
+    drawing: document.getElementById('drawing'),
+    snacklength: [], //数组长度，表示蛇身长度，每节蛇身是一个对象，保存蛇颜色、及x,y坐标。末号是蛇头
+    snackWidth: 30, //一节蛇身的宽度
+    snackStartX: 0,
+    snackStartY: 0,
+    snackStartLength: 3,
+    direction: 'none',
+    timer: null,
+
+};
+
+//随机产生颜色
+function getRandomColor() {
+    return "#" + ('00000' + Math.random() * 0xffffff << 0).toString(16).substr(-6); //<<0有取整之意
+}
+
+(function() {
+    initial();
+    window.addEventListener('keyup', handleKey);
+})();
+
+//创建网格,并初始化画布
+function initial() {
+    for (var i = 0; i < 400; i++) {
+        var node = document.createElement('div');
+        props.wrapper.appendChild(node);
+    }
+
+
+    for (let i = 0; i < props.snackStartLength; i++) { //初始化3节蛇身
+        let color = getRandomColor(),
+            x = props.snackStartX + i * props.snackWidth,
+            y = props.snackStartY;
+
+        props.snacklength.push({
+            'color': color,
+            'x': x,
+            'y': y
+        })
+    }
+    drawSnack(props.snacklength);
+
+}
+//绘制蛇身体,arr，c存储要绘制的蛇的信息，包括颜色、坐标
+function drawSnack(arr) {
+    var len = arr.length,
+        color = '',
+        x = 0,
+        y = 0;
+    if (props.drawing.getContext) {
+        var context = props.drawing.getContext('2d');
+        context.clearRect(0, 0, 600, 600);
+        for (let i = 0; i < len; i++) {
+            x = props.snacklength[i].x;
+            y = props.snacklength[i].y;
+            color = props.snacklength[i].color
+            context.fillStyle = color;
+            context.fillRect(x, y, 29, 29);
+        }
+    }
+}
+//按键处理程序
+function handleKey(event) {
+	console.log(event.keyCode)
+    switch (event) {
+        //上
+        case 'ArrowUp':
+        case 'w':
+        case 'W':
+            moveUp();
+            break;
+            //右
+        case 'ArrowRight':
+        case 'a':
+        case 'A':
+            moveRight();
+            break;
+            //下
+        case 'ArrowDown':
+        case 'z':
+        case 'Z':
+            moveDown();
+            break;
+
+            //左
+        case 'ArrowLeft':
+        case 'd':
+        case 'D':
+            moveLeft();
+            break;
+    }
+}
+
+function moveUp() {
+
+}
+
+function moveRight() {
+    props.timer = setInterval(moveSnack, 1000 / 4); //1秒钟移动4次
+
+
+}
+
+function moveDown() {
+    var len = props.snackStartLength.length;
+
+}
+
+function moveLeft() {
+
+}
+//移动蛇身
+function moveSnack() {
+    var len = props.snacklength.length,
+        snackBodyLen = (len - 1) * 30;
+    for (let i = 0; i < len; i++) {
+        // if (props.snacklength[0].x >= 600 - snackBodyLen) {
+        //     console.log(props.snacklength[0].x)
+
+        //     clearInterval(props.timer);
+        //     break;
+        // }
+        if (i == len - 1) {
+            if (props.snacklength[i].x >= 570) {
+                clearInterval(props.timer);
+                break;
+            }
+            props.snacklength[i].x = props.snacklength[i].x + props.snackWidth;
+        } else {
+        	if (props.snacklength[0].x >= 510) {
+                clearInterval(props.timer);
+                break;
+            }
+            props.snacklength[i].x = props.snacklength[i + 1].x
+
+        }
+        // console.log(props.snacklength[i].x)
+    }
+    // console.log(props.snacklength)
+    drawSnack(props.snacklength);
+
+}
+</script>
+
+</html>

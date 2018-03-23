@@ -26,18 +26,18 @@ function show() {
 
 	supernatant.style.display = 'block';
 	screen.style.display = 'block';
-	// document.documentElement.style.overflow = 'hidden';//禁止滚动
+	document.documentElement.style.overflow = 'hidden'; //禁止滚动
 }
 
 function unshow() {
 	supernatant.style.display = 'none';
 	screen.style.display = 'none';
-	// document.documentElement.style.overflow = 'auto';
+	document.documentElement.style.overflow = 'auto';
 }
 
 function resize() {
-	getwidthAndheight()
-	setwidthAndheight()
+	getwidthAndheight();
+	setwidthAndheight();
 }
 //获取视口的宽和高
 function getwidthAndheight() {
@@ -51,13 +51,13 @@ function setwidthAndheight() {
 	supernatant.style.left = left_ + 'px';
 	supernatant.style.top = top_ + 'px';
 	screen.style.width = docWidth + 'px';
-	screen.style.height = docWidth + 'px';
+	screen.style.height = docHeight + 'px';
 }
 
 //实现拖拽
 function drag(e) {
 	e = e || window.event;
-	
+
 	var diffX = e.clientX - supernatant.offsetLeft;
 	var diffY = e.clientY - supernatant.offsetTop;
 
@@ -66,11 +66,10 @@ function drag(e) {
 		var super_left = e.clientX - diffX;
 		var super_top = e.clientY - diffY;
 		supernatant.style.left = e.clientX - diffX <= 0 ? 0 : (super_left + supernatant.offsetWidth) >= docWidth ? super_left : (e.clientX - diffX) + 'px';
-		supernatant.style.top = e.clientY - diffY <= 0 ? 0 :(super_top + supernatant.offsetHeight)  >= docHeight ? super_top : e.clientY - diffY + 'px';
+		supernatant.style.top = e.clientY - diffY <= 0 ? 0 : (super_top + supernatant.offsetHeight) >= docHeight ? super_top : e.clientY - diffY + 'px';
 	}
 	document.onmouseup = function() {
 		document.onmousemove = null;
 		document.onmouseup = null;
 	}
 }
-n=10;

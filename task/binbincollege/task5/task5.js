@@ -29,19 +29,19 @@ window.onload = function() {
 		out();
 	}
 	right_out.onclick = function() {
-		flag_out = 'right';
-		out();
-	}
-	//点击数字删除
+			flag_out = 'right';
+			out();
+		}
+		//点击数字删除
 	list_num.onmouseover = function() {
 			for (var i = 0; i < list_num.children.length; i++) {
 				(function(n) {
 					list_num.children[n].onclick = function() {
 						list_num.removeChild(this);
-						number.splice(n,1);
+						number.splice(n, 1); //删除下标为n的元素，破坏原数组，返回更改的数组
 						///alert(n);
 					}
-				})(i)//创建闭包，传递index
+				})(i) //创建闭包，传递index
 			}
 		}
 		//点击排序
@@ -66,25 +66,25 @@ window.onload = function() {
 		}
 		//移除数字
 	var out = function() {
-		if (list_num.children.length > 0) {
-			if (flag_out === 'left') {
-				number.shift();
-				list_num.removeChild(list_num.children[0]);
-			}
-			if (flag_out === 'right') {
-				number.pop()
-				list_num.removeChild(list_num.lastElementChild);
-			}
-		} else
-			alert('没有数字了');
-	}
-//输入
+			if (list_num.children.length > 0) {
+				if (flag_out === 'left') {
+					number.shift();
+					list_num.removeChild(list_num.children[0]);
+				}
+				if (flag_out === 'right') {
+					number.pop()
+					list_num.removeChild(list_num.lastElementChild);
+				}
+			} else
+				alert('没有数字了');
+		}
+		//输入
 	var in_ = function() {
 		var value = input.value;
 		var add = document.createElement('span')
 		add.className = 'display';
 		if (value >= 10 && value <= 100 && count <= 60) {
-			 add.style.width = 20 + 5 * value + 'px';
+			add.style.width = 20 + 5 * value + 'px';
 			//add.style.height =  value + 'px';
 			add.innerHTML = value;
 			if (flag_in === 'right') {

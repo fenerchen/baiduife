@@ -70,35 +70,39 @@ Createtable.prototype = {
 	},
 
 	//排序
-	addsort: function(index ,flag) {
-		var num_arr=[];
-		var num_arr_copy=[];
+	addsort: function(index, flag) {
+		var num_arr = [];
+		var num_arr_copy = [];
 		var tbody = document.getElementsByTagName('tbody')[0];
-		var len=tbody.rows.length;
-		 for(let i=1;i<len;i++){
-		 	num_arr.push(tbody.rows[i].cells[index].innerHTML);
-		 }
-		 num_arr_copy=num_arr.slice();//复制数据
-		 if(!flag){
-		 	num_arr.sort(function(a,b){return b-a;});
-		 }else{
-		 	num_arr.sort(function(a,b){return a-b;});
-		 }
-		 // alert(num_arr);
-		 // alert(num_arr_copy);
-		 for(var j=0;j<num_arr.length;j++){
-		 	var new_index=num_arr_copy.indexOf(num_arr[j]);
-		 	if(j!=new_index){
-		 		var x=j+1;
-		 		var temp=tbody.rows[x].innerHTML;
-		 		tbody.rows[x].innerHTML=tbody.rows[new_index+1].innerHTML;
-		 		tbody.rows[new_index+1].innerHTML=temp;
+		var len = tbody.rows.length;
+		for (let i = 1; i < len; i++) {
+			num_arr.push(tbody.rows[i].cells[index].innerHTML);
+		}
+		num_arr_copy = num_arr.slice(); //复制数据
+		if (!flag) {
+			num_arr.sort(function(a, b) {
+				return b - a;
+			}); //sort改变数组元素顺序
+		} else {
+			num_arr.sort(function(a, b) {
+				return a - b;
+			});
+		}
+		alert(num_arr);
+		alert(num_arr_copy);
+		for (var j = 0; j < num_arr.length; j++) {
+			var new_index = num_arr_copy.indexOf(num_arr[j]);
+			if (j != new_index) {
+				var x = j + 1;
+				var temp = tbody.rows[x].innerHTML;
+				tbody.rows[x].innerHTML = tbody.rows[new_index + 1].innerHTML;
+				tbody.rows[new_index + 1].innerHTML = temp;
 
-		 		var t=num_arr_copy[j];//老数组中的值也要替换，它是表格顺序的映射，老数组顺序排好后，表格也就排好了
-		 		num_arr_copy[j]=num_arr_copy[new_index];
-		 		num_arr_copy[new_index]=t;
-		 	}
-		 }
+				var t = num_arr_copy[j]; //老数组中的值也要替换，它是表格顺序的映射，老数组顺序排好后，表格也就排好了
+				num_arr_copy[j] = num_arr_copy[new_index];
+				num_arr_copy[new_index] = t;
+			}
+		}
 	}
 
 }
@@ -118,11 +122,11 @@ var downbutton = document.getElementsByClassName('downbutton');
 
 (function() {
 	for (let i = 1; i <= 4; i++) {
-		upbutton[i-1].addEventListener('click', function(){
-			table.addsort(i,1);
+		upbutton[i - 1].addEventListener('click', function() {
+			table.addsort(i, 1);
 		});
-		downbutton[i-1].addEventListener('click', function(){
-			table.addsort(i,0);
+		downbutton[i - 1].addEventListener('click', function() {
+			table.addsort(i, 0);
 		});
 
 	}
