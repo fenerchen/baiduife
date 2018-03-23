@@ -5,3 +5,4 @@
 3. 输入定时时间
 
 ![演示](https://github.com/fenerchen/baiduife/blob/master/demo/img/timer.gif)
+[](https://github.com/fenerchen/baiduife/blob/master/demo/Simpletimer.html)
